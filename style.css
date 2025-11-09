@@ -7,7 +7,7 @@ body {
 /* Top Navbar */
 .navbar {
   width: 100%;
-  background: #4b008b; /* বেগুনি রং */
+  background: #4b008b;
   color: #fff;
   padding: 12px 30px;
   display: flex;
@@ -19,20 +19,6 @@ body {
 .navbar-title {
   font-size: 22px;
   font-weight: bold;
-}
-
-.search-box {
-  width: 40%;
-  max-width: 400px;
-}
-
-.search-box input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 25px;
-  border: none;
-  outline: none;
-  box-sizing: border-box;
 }
 
 .icons {
@@ -56,10 +42,7 @@ body {
 .tab-menu {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
-  padding-bottom: 0;
-  margin-bottom: 0;
 }
 
 .tab-menu div {
@@ -69,26 +52,33 @@ body {
   font-weight: bold;
   color: #4b008b;
   border-bottom: 3px solid transparent;
-  transition: border-bottom 0.3s;
+  transition: 0.3s;
 }
 
-.tab-menu div.active {
-  border-bottom: 3px solid #4b008b; 
-  color: #4b008b;
+.tab-menu .active {
+  border-bottom: 3px solid #4b008b;
+}
+
+.tab-content {
+  display: none;
+  padding-top: 20px;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 .form-group {
   text-align: left;
-  margin-top: 20px;
   padding: 0 5%;
 }
 
 .form-group label {
-  display: block;
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 8px;
   color: #333;
+  display: block;
 }
 
 .form-group input {
@@ -97,31 +87,8 @@ body {
   margin-bottom: 15px;
   border-radius: 8px;
   border: 1px solid #aaa;
-  outline: none;
-  box-sizing: border-box;
   font-size: 16px;
-}
-
-
-.login-container .form-group-content input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
   box-sizing: border-box;
-  margin-bottom: 15px;
-  font-size: 16px;
-}
-
-
-.reset-success-message {
-  color: #333;
-  font-size: 14px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  padding: 0 5%;
-  text-align: left;
 }
 
 .password-input-container {
@@ -131,10 +98,9 @@ body {
 
 .password-input-container input {
   padding-right: 40px;
-  margin-bottom: 0;
 }
 
-.password-input-container .eye-icon {
+.eye-icon {
   position: absolute;
   right: 15px;
   top: 50%;
@@ -142,8 +108,6 @@ body {
   cursor: pointer;
   color: #4b008b;
   font-size: 20px;
-  
-  cursor: pointer;
 }
 
 .checkbox-area {
@@ -153,7 +117,7 @@ body {
   justify-content: space-between;
   font-size: 14px;
   align-items: center;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .login-btn,
@@ -168,13 +132,6 @@ body {
   font-size: 18px;
   cursor: pointer;
   margin-top: 12px;
-  transition: background 0.3s;
-}
-
-.login-btn:hover,
-.register-btn:hover,
-.reset-btn:hover {
-  background: #12572b;
 }
 
 .register-text {
@@ -183,27 +140,26 @@ body {
 }
 
 .secondary-action {
-  display: block;
-  margin-top: 15px;
-  font-size: 14px;
   color: #4b008b;
-  text-decoration: none;
   font-weight: bold;
-}
-
-.tab-content {
-  display: none;
-  padding-top: 20px;
-}
-
-.tab-content.active {
+  text-decoration: none;
+  font-size: 14px;
   display: block;
+  margin-top: 10px;
+}
+
+.reset-success-message {
+  color: #333;
+  font-size: 14px;
+  padding: 0 5%;
+  margin-bottom: 15px;
+  text-align: left;
 }
 
 footer {
   text-align: center;
   padding: 20px;
   color: #777;
-  margin-top: 100px;
   font-size: 14px;
+  margin-top: 80px;
 }
