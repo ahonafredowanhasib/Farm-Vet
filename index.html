@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>ফার্ম ভেট</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+        }
+
+        /* Top Navbar */
+        .navbar {
+            width: 100%;
+            background: #4B008B;
+            color: #fff;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            width: 40%;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+        }
+
+        .icons {
+            font-size: 24px;
+            display: flex;
+            gap: 20px;
+            cursor: pointer;
+        }
+
+        /* Login Box */
+        .login-container {
+            width: 360px;
+            margin: 80px auto;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .tab-menu {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .tab-menu div {
+            cursor: pointer;
+            font-weight: bold;
+            color: #4B008B;
+        }
+
+        .login-container input {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #aaa;
+            outline: none;
+        }
+
+        .checkbox-area {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .login-btn {
+            background: #176A34;
+            color: white;
+            width: 90%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .register-text {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-title">ফার্ম ভেট</div>
+
+        <div class="search-box">
+            <input type="text" placeholder="কিছু খুঁজুন">
+        </div>
+
+        <div class="icons">🛒 👤</div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+
+        <div class="tab-menu">
+            <div>লগইন</div>
+            <div>রেজিস্ট্রেশন</div>
+            <div>রিসেট</div>
+        </div>
+
+        <input type="email" placeholder="ইমেইল" value="masud@demo.com">
+        <input type="password" placeholder="পাসওয়ার্ড" value="************">
+
+        <div class="checkbox-area">
+            <label><input type="checkbox"> মনে রাখুন</label>
+            <a href="#" style="color:#4B008B;">পাসওয়ার্ড ভুলে গেছেন?</a>
+        </div>
+
+        <button class="login-btn">লগইন করুন</button>
+
+        <div class="register-text">
+            নতুন? <a href="#" style="color:#4B008B;">রেজিস্ট্রেশন করুন</a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © ২০২৫ ফার্ম ভেট। সর্বস্বত্ব সংরক্ষিত।
+    </footer>
+
+</body>
+</html>
