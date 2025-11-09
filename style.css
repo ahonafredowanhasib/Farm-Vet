@@ -21,13 +21,6 @@ body {
   font-weight: bold;
 }
 
-.icons {
-  font-size: 24px;
-  display: flex;
-  gap: 20px;
-  cursor: pointer;
-}
-
 /* Login Box */
 .login-container {
   width: 360px;
