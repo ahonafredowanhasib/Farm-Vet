@@ -1,6 +1,32 @@
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  transition: opacity 0.3s ease;
+}
+
+.loading-text {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #4b008b;
+  padding: 15px 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", "Baloo Da 2", Arial, sans-serif;
   background: #ffffff;
 }
 
@@ -155,4 +181,24 @@ footer {
   color: #777;
   font-size: 14px;
   margin-top: 80px;
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: none;
+    flex-grow: 1;
+    min-height: calc(100vh - 58px);
+  }
+
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .navbar-title {
+    font-size: 24px;
+  }
 }

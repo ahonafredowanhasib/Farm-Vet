@@ -20,7 +20,7 @@ function redirectToDashboard() {
     const demoPass = "1234567";
 
     if (email === demoEmail && pass === demoPass) {
-        window.location.href = "./dashboard/dashboard.html"; 
+        window.location.href = "./dashboard/dashboard.html";
     } else {
         alert("❌ ইমেইল বা পাসওয়ার্ড ভুল!");
     }
@@ -29,3 +29,17 @@ function redirectToDashboard() {
 document.getElementById("loginTab").onclick = () => showTab("login");
 document.getElementById("registerTab").onclick = () => showTab("register");
 document.getElementById("resetTab").onclick = () => showTab("reset");
+
+window.onload = function () {
+    const loader = document.getElementById('loaderOverlay');
+
+    if (loader) {
+        setTimeout(() => {
+            loader.style.opacity = '0';
+
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 300);
+        }, 1500);
+    }
+};

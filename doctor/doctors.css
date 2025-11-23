@@ -1,6 +1,8 @@
 :root {
   --primary-color: #5d00a1;
+  /* Deep Purple */
   --action-color: #387b38;
+  /* Dark Green */
   --background-light: #f7f7f7;
   --text-dark: #333;
   --text-medium: #777;
@@ -13,12 +15,10 @@
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.9);
-
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-
   transition: opacity 0.3s ease;
 }
 
@@ -60,6 +60,7 @@ body {
   flex-shrink: 0;
 }
 
+/* Search Bar Container */
 .search-container {
   flex-grow: 1;
   display: flex;
@@ -97,8 +98,10 @@ body {
   font-size: 18px;
 }
 
+/* NEW: Cart Text Button Style */
 .cart-text-button {
   background-color: #7934b1;
+  /* A slightly lighter purple than primary */
   color: white;
   border: none;
   padding: 8px 15px;
@@ -108,7 +111,9 @@ body {
   cursor: pointer;
   transition: background-color 0.3s;
   margin-right: 20px;
+  /* Space before the icons */
   text-decoration: none;
+  /* In case it's an anchor tag */
   display: flex;
   align-items: center;
   gap: 8px;
@@ -161,7 +166,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.main-title {
+.section-title {
   font-size: 28px;
   font-weight: 500;
   color: var(--text-dark);
@@ -170,7 +175,7 @@ body {
   border-bottom: 1px solid #eee;
 }
 
-.product-item {
+.doctor-item {
   border-bottom: 1px solid #eee;
   padding: 15px 0;
   display: flex;
@@ -179,39 +184,40 @@ body {
   transition: background-color 0.1s;
 }
 
-.product-list > .product-item:last-child {
+.doctor-list > .doctor-item:last-child {
   border-bottom: none;
 }
 
-.product-item:hover {
+.doctor-item:hover {
   background-color: #fcfcfc;
 }
 
-.product-details {
+.doctor-info {
   flex-grow: 1;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
-.product-name {
+.doctor-name {
   font-size: 16px;
   font-weight: 500;
   color: var(--text-dark);
   margin-bottom: 3px;
 }
 
-.manufacturer {
+.doctor-specialty {
   font-size: 14px;
   color: var(--text-medium);
 }
 
-.product-action {
+.appointment-details {
   display: flex;
   align-items: center;
-  min-width: 150px;
+  min-width: 180px;
+  flex-shrink: 0;
 }
 
-.price {
+.fee {
   font-size: 18px;
   font-weight: 700;
   color: var(--primary-color);
@@ -221,7 +227,7 @@ body {
   direction: ltr;
 }
 
-.order-button {
+.book-button {
   background-color: var(--action-color);
   color: white;
   border: none;
@@ -235,7 +241,7 @@ body {
   text-align: center;
 }
 
-.order-button:hover {
+.book-button:hover {
   background-color: #2b612b;
 }
 
@@ -247,8 +253,7 @@ footer {
   font-size: 14px;
 }
 
-/* mobile response */
-
+/* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
   .header {
     padding: 10px 15px;
@@ -264,6 +269,7 @@ footer {
 
   .cart-text-button {
     display: none;
+    /* Hide the text button on small screens */
   }
 
   .user-icons {
@@ -281,38 +287,38 @@ footer {
     border-radius: 8px;
   }
 
-  .main-title {
+  .section-title {
     font-size: 24px;
     margin-bottom: 15px;
     padding-bottom: 10px;
   }
 
-  .product-item {
+  .doctor-item {
     flex-direction: column;
     align-items: flex-start;
     padding: 15px 0;
   }
 
-  .product-details {
+  .doctor-info {
     width: 100%;
     margin-bottom: 10px;
   }
 
-  .product-name {
+  .doctor-name {
     font-size: 18px;
   }
 
-  .manufacturer {
+  .doctor-specialty {
     font-size: 13px;
   }
 
-  .product-action {
+  .appointment-details {
     width: 100%;
     justify-content: space-between;
     min-width: auto;
   }
 
-  .price {
+  .fee {
     font-size: 16px;
     margin-right: 0;
     text-align: left;
@@ -320,7 +326,7 @@ footer {
     padding-top: 5px;
   }
 
-  .order-button {
+  .book-button {
     width: 100px;
     padding: 8px 15px;
     font-size: 14px;

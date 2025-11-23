@@ -5,17 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ফার্ম ভেট হোমপেজ</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="dashboard.css">
+
+
 </head>
 
 <body>
+    <div class="loader-overlay" id="loaderOverlay">
+        <span class="loading-text">Loading...</span>
+    </div>
     <div class="page-container">
         <header class="top-bar">
             <h1 class="logo">ফার্ম ভেট</h1>
             <div class="search-bar-container">
-                <input type="text" placeholder="ঔষধ খুঁজুন" class="search-input">
                 <i class="fas fa-search search-icon"></i>
             </div>
             <div class="header-icons">
@@ -38,10 +46,12 @@
                     <div class="service-icon"><i class="fas fa-pills"></i></div>
                     <p class="service-name">ঔষধ</p>
                 </div>
-                <div class="service-card">
+
+                <div class="service-card" id="doctor-card">
                     <div class="service-icon"><i class="fas fa-stethoscope"></i></div>
                     <p class="service-name">ডাক্তার</p>
                 </div>
+
                 <div class="service-card">
                     <div class="service-icon"><i class="fas fa-headset"></i></div>
                     <p class="service-name">হেল্পলাইন</p>
@@ -53,8 +63,8 @@
                     <h2>টপ রেটেড ডাক্তার</h2>
                     <div class="list-item">
                         <div class="item-details">
-                            <p class="item-name">ডা. আব্দুল্লাহ্ আহাদ</p>
-                            <p class="item-info">পশু চিকিৎসা, ডেইরি ও পোল্ট্রি বিশেষজ্ঞ</p>
+                            <p class="item-name">ডা. মাশিয়ায় তাহসীন</p>
+                            <p class="item-info">পশু চিকিৎসক, সার্জারি পশু বিশেষজ্ঞ</p>
                         </div>
                         <div class="item-action">
                             <span class="price">৳ 500</span>
@@ -63,7 +73,7 @@
                     </div>
                     <div class="list-item">
                         <div class="item-details">
-                            <p class="item-name">ডা. ফাতেমা আক্তার</p>
+                            <p class="item-name">ডা. ইমন আহমেদ নয়ন</p>
                             <p class="item-info">পোল্ট্রি ও ডেইরি বিশেষজ্ঞ</p>
                         </div>
                         <div class="item-action">
@@ -102,6 +112,7 @@
     <footer>
         © ২০২৫ ফার্ম ভেট. সর্বস্বত্ব সংরক্ষিত
     </footer>
+
 
     <script src="dashboard.js"></script>
 </body>

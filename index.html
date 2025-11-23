@@ -8,12 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;700&display=swap" rel="stylesheet">
 
-
-
 </head>
 
 <body>
-
+    <div class="loader-overlay" id="loaderOverlay">
+        <span class="loading-text">Loading...</span>
+    </div>
     <div class="navbar">
         <div class="navbar-title">ফার্ম ভেট</div>
     </div>
@@ -26,7 +26,6 @@
             <div id="resetTab" data-tab="reset">রিসেট</div>
         </div>
 
-        <!-- LOGIN -->
         <div id="loginContent" class="tab-content active">
             <div class="form-group">
                 <label for="loginEmail">ইমেইল</label>
@@ -53,7 +52,6 @@
             </div>
         </div>
 
-        <!-- REGISTER -->
         <div id="registerContent" class="tab-content">
             <div class="form-group">
                 <label for="registerName">সম্পূর্ণ নাম</label>
@@ -73,7 +71,6 @@
             <a href="#" onclick="showTab('login'); return false;" class="secondary-action">লগইন করুন</a>
         </div>
 
-        <!-- RESET -->
         <div id="resetContent" class="tab-content">
             <div class="form-group">
                 <label for="resetEmail">ইমেইল</label>
@@ -91,7 +88,6 @@
     <footer>
         © ২০২৫ ফার্ম ভেট. সর্বস্বত্ব সংরক্ষিত
     </footer>
-
 
 
     <script src="login.js"></script>
