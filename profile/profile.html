@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রোফাইল আপডেট - ফার্ম ভেট</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-purple: #4a148c;
+            --secondary-purple: #8e24aa;
+            --primary-green: #4caf50;
+            --dark-green: #1b5e20;
+            --light-bg: #f4f4f4;
+            --text-dark: #333;
+            --text-medium: #666;
+        }
+
+        body {
+            font-family: "Baloo Da 2", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .profile-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .back-button-container {
+            margin-bottom: 25px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary-purple);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
+        .back-button:hover {
+            background-color: #5d3596;
+        }
+
+        .profile-header {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--primary-purple);
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            font-size: 1.05em;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-purple);
+            outline: none;
+        }
+        
+        /* অক্ষম ফিল্ডের জন্য স্টাইল */
+        .form-group input:disabled {
+            background-color: #f0f0f0;
+            color: #888;
+            cursor: not-allowed;
+        }
+
+
+        .update-button {
+            width: 100%;
+            display: block;
+            background-color: var(--primary-green); 
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .update-button:hover {
+            background-color: var(--dark-green);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-container">
+        
+        <div class="back-button-container">
+            <button class="back-button" id="backToHomeButton">
+                <i class="fas fa-arrow-left"></i> হোমপেজে ফিরে যান
+            </button>
+        </div>
+        
+        <h2 class="profile-header">আমার প্রোফাইল</h2>
+        
+        <form id="profileUpdateForm">
+            <div class="form-group">
+                <label for="name">নাম:</label>
+                <input type="text" id="name" name="name" value="" placeholder="আপনার সম্পূর্ণ নাম" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">ফোন নম্বর:</label>
+                <input type="text" id="phone" name="phone" value="" placeholder="আপনার ফোন নম্বর" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">ইমেইল:</label>
+                <input type="email" id="email" name="email" value="" placeholder="আপনার ইমেইল ঠিকানা" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="current-password">বর্তমান পাসওয়ার্ড:</label>
+                <input type="password" id="current-password" name="current-password" placeholder="আপনার বর্তমান পাসওয়ার্ড" required>
+            </div>
+
+            <div class="form-group">
+                <label for="new-password">নতুন পাসওয়ার্ড:</label>
+                <input type="password" id="new-password" name="new-password" placeholder="নতুন পাসওয়ার্ড (ঐচ্ছিক)">
+            </div>
+
+            <button type="submit" class="update-button">আপডেট করুন</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('profileUpdateForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            // ডেটা সংগ্রহের প্রয়োজন নেই, শুধুমাত্র নিশ্চিত করতে হবে যে বর্তমান পাসওয়ার্ড পূরণ করা হয়েছে
+            const currentPassword = document.getElementById('current-password').value;
+            
+            if (currentPassword.trim() === "") {
+                alert("প্রোফাইল আপডেট করার জন্য বর্তমান পাসওয়ার্ড প্রয়োজন।");
+                return; 
+            }
+            
+            // পাসওয়ার্ড ফিল্ডগুলো খালি করে দেওয়া হলো
+            document.getElementById('new-password').value = ''; 
+            document.getElementById('current-password').value = ''; 
+
+            // আপডেট সফল হওয়ার পর অ্যালার্ট দেখাবে
+            alert("আপনার প্রোফাইলটি সফলভাবে আপডেট করা হয়েছে।");
+            
+            // ওকে (OK) বাটনে ক্লিক করার পর ব্যবহারকারীকে হোমপেজে (dashboard.html) নিয়ে যাবে
+            window.location.href = "../dashboard/dashboard.html";
+        });
+
+        document.getElementById('backToHomeButton').addEventListener('click', function() {
+            // হোমপেজে ফিরে যেতে
+            window.location.href = "../dashboard/dashboard.html"; 
+        });
+    </script>
+</body>
+
+</html>
