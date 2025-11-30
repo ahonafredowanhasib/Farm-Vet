@@ -4,6 +4,7 @@
   --background-light: #f7f7f7;
   --text-dark: #333;
   --text-medium: #777;
+  --back-button-bg: #8e24aa; /* Added back button color */
 }
 
 .loader-overlay {
@@ -13,12 +14,10 @@
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.9);
-
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-
   transition: opacity 0.3s ease;
 }
 
@@ -98,32 +97,13 @@ body {
 }
 
 .cart-text-button {
-  background-color: #7934b1;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  font-size: 15px;
-  font-weight: 500;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-right: 20px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-.cart-text-button:hover {
-  background-color: #6a1a9f;
+  display: none; /* Hidden as requested */
 }
 
 .user-icons {
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: auto; /* Aligned to right */
   gap: 15px;
   flex-shrink: 0;
 }
@@ -150,6 +130,31 @@ body {
   padding: 2px 6px;
   font-size: 11px;
   line-height: 1;
+}
+
+/* Back Button Style */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--back-button-bg);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+}
+
+.back-button i {
+  margin-right: 8px;
+}
+
+.back-button:hover {
+  background-color: #a346c7;
 }
 
 .main-content-wrapper {
@@ -279,6 +284,12 @@ footer {
     margin: 15px;
     padding: 15px;
     border-radius: 8px;
+  }
+
+  .back-button {
+    margin-bottom: 15px;
+    width: 100%;
+    justify-content: center;
   }
 
   .main-title {

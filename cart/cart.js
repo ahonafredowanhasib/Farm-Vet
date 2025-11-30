@@ -1,12 +1,11 @@
 function formatCurrency(amount) {
-    return `৳ ${amount.toLocaleString('bn-BD')}`;
+    return `৳ ${Number(amount).toLocaleString('bn-BD')}`;
 }
 
 function updateCartBadge(count) {
     const badge = document.getElementById('cartBadge');
     if (badge) {
         badge.textContent = count;
-        badge.style.display = count > 0 ? 'block' : 'none';
     }
 }
 
@@ -24,6 +23,7 @@ function renderCart() {
         cartSummary.style.display = 'none';
         updateCartBadge(0);
         cartList.innerHTML = '';
+        attachEventListeners();
         return;
     }
 
@@ -40,33 +40,33 @@ function renderCart() {
         let quantityControlHtml = '';
         if (isMedicine) {
             quantityControlHtml = `
-                <div class="quantity-controls">
-                    <button class="qty-btn" data-index="${index}" data-action="decrement" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
-                    <input type="text" class="item-quantity" value="${item.quantity}" readonly>
-                    <button class="qty-btn" data-index="${index}" data-action="increment">+</button>
-                </div>
-            `;
+                        <div class="quantity-controls">
+                            <button class="qty-btn" data-index="${index}" data-action="decrement" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+                            <input type="text" class="item-quantity" value="${item.quantity}" readonly>
+                            <button class="qty-btn" data-index="${index}" data-action="increment">+</button>
+                        </div>
+                    `;
         } else {
-            quantityControlHtml = `<div class="quantity-controls" style="min-width:30px; border: none; margin-right: 40px;">1</div>`;
+            quantityControlHtml = `<div class="quantity-controls" style="min-width:30px; border: none; margin-right: 40px;">বুকিং</div>`;
         }
 
 
         cartHtml += `
-            <div class="cart-item" data-index="${index}">
-                <div class="item-info">
-                    <div class="item-name">${item.name}</div>
-                    <div class="item-details">${item.info}</div>
-                </div>
-                <div class="item-price-actions">
-                    ${quantityControlHtml}
-                    <div class="item-price">
-                        ${formatCurrency(item.price)}
-                        <span class="item-subtotal">মোট: ${formatCurrency(subtotal)}</span>
+                    <div class="cart-item" data-index="${index}">
+                        <div class="item-info">
+                            <div class="item-name">${item.name}</div>
+                            <div class="item-details">${item.info}</div>
+                        </div>
+                        <div class="item-price-actions">
+                            ${quantityControlHtml}
+                            <div class="item-price">
+                                ${formatCurrency(item.price)}
+                                <span class="item-subtotal">মোট: ${formatCurrency(subtotal)}</span>
+                            </div>
+                            <i class="fas fa-trash-alt delete-btn" data-index="${index}"></i>
+                        </div>
                     </div>
-                    <i class="fas fa-trash-alt delete-btn" data-index="${index}"></i>
-                </div>
-            </div>
-        `;
+                `;
     });
 
     cartList.innerHTML = cartHtml;
@@ -79,6 +79,10 @@ function renderCart() {
 function attachEventListeners() {
     const deleteButtons = document.querySelectorAll('.delete-btn');
     const qtyButtons = document.querySelectorAll('.qty-btn');
+    const backButton = document.getElementById('backButton');
+    const homeIcon = document.getElementById('home-icon');
+    const loader = document.getElementById('loaderOverlay');
+    const checkoutButton = document.querySelector('.checkout-btn');
 
     deleteButtons.forEach(button => {
         button.addEventListener('click', (event) => {
@@ -113,9 +117,38 @@ function attachEventListeners() {
         });
     });
 
-    document.querySelector('.checkout-btn').addEventListener('click', () => {
-        alert('চেকআউট প্রক্রিয়াকরণ শুরু হচ্ছে...');
-    });
+    if (homeIcon) {
+        homeIcon.addEventListener('click', () => {
+            if (loader) {
+                loader.style.display = 'flex';
+                setTimeout(() => { loader.style.opacity = '1'; }, 10);
+            }
+            setTimeout(() => {
+                window.location.href = "../dashboard/dashboard.html";
+            }, 500);
+        });
+    }
+
+    if (backButton) {
+        backButton.addEventListener('click', () => {
+            window.history.back();
+        });
+    }
+
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', () => {
+            alert('চেকআউট প্রক্রিয়াকরণ শুরু হচ্ছে...');
+
+            if (loader) {
+                loader.style.display = 'flex';
+                setTimeout(() => { loader.style.opacity = '1'; }, 10);
+            }
+
+            setTimeout(() => {
+                window.location.href = "../checkout/checkout.html";
+            }, 1500);
+        });
+    }
 }
 
 

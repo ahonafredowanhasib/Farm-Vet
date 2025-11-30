@@ -1,330 +1,17 @@
 <!DOCTYPE html>
 <html lang="bn">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ফার্ম ভেট হোমপেজ</title>
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <style>
-        :root {
-            --primary-purple: #4a148c;
-            --secondary-purple: #8e24aa;
-            --primary-green: #4caf50;
-            --dark-green: #1b5e20;
-            --light-bg: #f4f4f4;
-            --text-dark: #333;
-            --text-medium: #666;
-        }
-
-        .loader-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            transition: opacity 0.3s ease;
-        }
-
-        .loading-text {
-            font-size: 1.5em;
-            font-weight: 700;
-            color: var(--primary-purple);
-            padding: 15px 30px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        body {
-            font-family: "Baloo Da 2", sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-bg);
-            color: var(--text-dark);
-        }
-
-        .top-bar {
-            background-color: var(--primary-purple);
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            /* search-bar-container বাদ দেওয়ায় space-between ব্যবহার করা হয়েছে */
-            justify-content: space-between; 
-        }
-
-        .logo {
-            font-size: 1.5em;
-            font-weight: 600;
-            margin: 0;
-            flex-shrink: 0;
-        }
-
-        /* সার্চ বার কন্টেইনার সম্পর্কিত সকল CSS রুল বাদ দেওয়া হলো */
-        .search-bar-container {
-            display: none; 
-        }
-
-        /* মোবাইল সার্চ আইকন সম্পর্কিত সকল CSS রুল বাদ দেওয়া হলো */
-
-        .header-icons {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
-        .notification-icon,
-        .cart-icon {
-            font-size: 1.2em;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .profile-icon {
-            font-size: 1.2em;
-            cursor: pointer;
-            color: white;
-            padding: 5px;
-            border-radius: 50%;
-            transition: background-color 0.2s;
-        }
-
-        .profile-icon:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .cart-icon span {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: #ff5722;
-            color: white;
-            font-size: 0.7em;
-            padding: 2px 5px;
-            border-radius: 50%;
-            line-height: 1;
-            display: none;
-        }
-
-        .main-content {
-            padding: 20px 80px;
-        }
-
-        .banner-section {
-            padding: 40px;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #fff7e6 0%, #ffebc3 40%, #ffc107 100%);
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .banner-content h3 {
-            font-size: 2em;
-            font-weight: 700;
-            color: var(--dark-green);
-            margin: 10px 0 5px;
-        }
-
-        .banner-content p {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 25px;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: linear-gradient(180deg, var(--primary-green) 0%, #2e7d32 100%);
-            color: white;
-            padding: 12px 40px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.2s;
-            box-shadow: 0 6px 0 var(--dark-green), 0 4px 6px rgba(0, 0, 0, 0.3);
-            line-height: 1.5;
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(180deg, #388e3c 0%, var(--dark-green) 100%);
-            transform: translateY(2px);
-            box-shadow: 0 4px 0 var(--dark-green), 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .services-section {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-bottom: 40px;
-        }
-
-        .service-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 12px;
-            width: 150px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-            cursor: pointer;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-icon {
-            font-size: 2.5em;
-            color: var(--primary-purple);
-            background-color: #f0ebf8;
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 10px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .service-name {
-            font-weight: 600;
-            color: var(--primary-purple);
-        }
-
-        .listings-section {
-            display: flex;
-            gap: 40px;
-            justify-content: center;
-        }
-
-        .listing-block {
-            flex-basis: 45%;
-            background-color: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .listing-block h2 {
-            font-size: 1.5em;
-            font-weight: 600;
-            color: var(--primary-purple);
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .list-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px dotted #ddd;
-        }
-
-        .list-item:last-child {
-            border-bottom: none;
-        }
-
-        .item-details {
-            text-align: left;
-        }
-
-        .item-name {
-            font-weight: 600;
-            font-size: 1.1em;
-            margin: 0;
-            color: var(--text-dark);
-        }
-
-        .item-info {
-            font-size: 0.9em;
-            color: #777;
-        }
-
-        .item-action {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .price {
-            font-size: 1.2em;
-            font-weight: 700;
-            color: var(--primary-purple);
-        }
-
-        .btn-secondary,
-        .btn-tertiary {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.2s;
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary-purple);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background-color: #7b1fa2;
-        }
-
-        .btn-tertiary {
-            background-color: var(--primary-green);
-            color: white;
-        }
-
-        .btn-tertiary:hover {
-            background-color: #388e3c;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #777;
-            margin-top: 100px;
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                padding: 10px 20px;
-            }
-
-            .logo {
-                font-size: 1.2em;
-            }
-
-            .listings-section {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .listing-block {
-                flex-basis: 100%;
-            }
-        }
-    </style>
-
-
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
@@ -335,15 +22,9 @@
     <div class="page-container">
         <header class="top-bar">
             <h1 class="logo">ফার্ম ভেট</h1>
-            <div class="search-bar-container">
-            </div>
             <div class="header-icons">
-                <i class="fas fa-bell notification-icon"></i>
-                <i class="fas fa-shopping-cart cart-icon" id="cart-icon">
-                    <span>0</span>
-                </i>
-                <i class="fas fa-user-circle profile-icon" id="profile-icon"></i>
-            </div>
+                <i class="fas fa-bell notification-icon"></i> <i class="fas fa-shopping-cart cart-icon" id="cart-icon"> <span>0</span> </i>
+                <i class="fas fa-user-circle profile-icon" id="profile-icon"></i> </div>
         </header>
 
         <main class="main-content">
@@ -351,8 +32,7 @@
                 <div class="banner-content">
                     <h3>নিশ্চিত হবে আপনার পশুর স্বাস্থ্য</h3>
                     <p>আপনার পশুর স্বাস্থ্য, আমাদের দায়িত্ব</p>
-                    <a href="#" class="btn btn-primary">যোগাযোগ করুন</a>
-                </div>
+                    <a href="#" class="btn btn-primary">যোগাযোগ করুন</a> </div>
             </section>
 
             <section class="services-section">
@@ -360,15 +40,13 @@
                     <div class="service-icon"><i class="fas fa-pills"></i></div>
                     <p class="service-name">ঔষধ</p>
                 </div>
-
                 <div class="service-card" id="doctor-card">
                     <div class="service-icon"><i class="fas fa-stethoscope"></i></div>
                     <p class="service-name">ডাক্তার</p>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-headset"></i></div>
-                    <p class="service-name">হেল্পলাইন</p>
+                <div class="service-card" id="dashboard-card">
+                    <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <p class="service-name">ড্যাশবোর্ড</p>
                 </div>
             </section>
 
@@ -423,136 +101,11 @@
             </section>
         </main>
     </div>
+    
     <footer>
         © ২০২৫ ফার্ম ভেট. সর্বস্বত্ব সংরক্ষিত
     </footer>
 
-    <script>
-        function updateCartBadge() {
-            const cartSpan = document.querySelector('.cart-icon span');
-            let cart = JSON.parse(localStorage.getItem('userCart')) || [];
-            const count = cart.length;
-
-            if (cartSpan) {
-                if (count > 0) {
-                    cartSpan.textContent = count;
-                    cartSpan.style.display = 'inline-block';
-                } else {
-                    cartSpan.textContent = '0';
-                    cartSpan.style.display = 'none';
-                }
-            }
-        }
-
-        window.onload = function () {
-            updateCartBadge();
-            const loader = document.getElementById('loaderOverlay');
-
-            if (loader) {
-                setTimeout(() => {
-                    loader.style.opacity = '0';
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                    }, 300);
-                }, 1500);
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const medicineCard = document.getElementById('medicine-card');
-            const doctorCard = document.getElementById('doctor-card');
-            const profileIcon = document.getElementById('profile-icon');
-            const cartIcon = document.getElementById('cart-icon');
-            const loader = document.getElementById('loaderOverlay');
-            /* searchMobileIcon সম্পর্কিত ভ্যারিয়েবল মুছে ফেলা হলো */
-
-            if (medicineCard) {
-                medicineCard.addEventListener('click', function () {
-                    if (loader) { loader.style.display = 'flex'; loader.style.opacity = '1'; }
-                    setTimeout(() => {
-                        window.location.href = "../medicine/medicine.html";
-                    }, 1500);
-                });
-            }
-
-            if (doctorCard) {
-                doctorCard.addEventListener('click', function () {
-                    if (loader) { loader.style.display = 'flex'; loader.style.opacity = '1'; }
-                    setTimeout(() => {
-                        window.location.href = "../doctor/doctors.html";
-                    }, 1500);
-                });
-            }
-
-            if (profileIcon) {
-                profileIcon.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    if (loader) { loader.style.display = 'flex'; loader.style.opacity = '1'; }
-                    setTimeout(() => {
-                        window.location.href = "../profile/profile.html";
-                    }, 1500);
-                });
-            }
-
-            if (cartIcon) {
-                cartIcon.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    if (loader) { loader.style.display = 'flex'; loader.style.opacity = '1'; }
-                    setTimeout(() => {
-                        window.location.href = "../cart/cart.html";
-                    }, 1500);
-                });
-            }
-
-            /* searchMobileIcon সম্পর্কিত ইভেন্ট লিসেনার মুছে ফেলা হলো */
-            
-            document.querySelectorAll('.btn-secondary, .btn-tertiary').forEach(button => {
-                button.addEventListener('click', function (event) {
-                    event.preventDefault();
-
-                    const listItem = event.target.closest('.list-item');
-                    const itemDetails = listItem.querySelector('.item-details');
-                    const itemName = itemDetails.querySelector('.item-name').textContent.trim();
-                    const itemInfo = itemDetails.querySelector('.item-info').textContent.trim();
-                    const priceText = listItem.querySelector('.price').textContent.trim();
-                    const itemPrice = parseInt(priceText.replace('৳', '').trim());
-                    const isDoctor = event.target.classList.contains('btn-secondary');
-
-                    const itemType = isDoctor ? 'doctor' : 'medicine';
-
-                    const newCartItem = {
-                        type: itemType,
-                        name: itemName,
-                        info: itemInfo,
-                        price: itemPrice,
-                        quantity: 1
-                    };
-
-                    let cart = JSON.parse(localStorage.getItem('userCart')) || [];
-
-                    const existingItemIndex = cart.findIndex(item =>
-                        item.type === itemType && item.name === itemName
-                    );
-
-                    if (existingItemIndex === -1) {
-                        cart.push(newCartItem);
-                        alert(`${itemName} সফলভাবে আপনার কার্টে যোগ করা হয়েছে।`);
-                    } else {
-                        if (itemType === 'medicine') {
-                            cart[existingItemIndex].quantity += 1;
-                            alert(`${itemName} এর পরিমাণ বাড়ানো হয়েছে। নতুন পরিমাণ: ${cart[existingItemIndex].quantity}`);
-                        } else {
-                            alert(`${itemName} এর বুকিং ইতিমধ্যেই আপনার কার্টে রয়েছে।`);
-                            return;
-                        }
-                    }
-
-                    localStorage.setItem('userCart', JSON.stringify(cart));
-                    updateCartBadge();
-                });
-            });
-        });
-    </script>
+    <script src="dashboard.js"></script>
 </body>
-
 </html>
